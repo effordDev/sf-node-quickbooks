@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const OAuthClient = require('intuit-oauth')
-const path = require('path')
+
 const express = require('express')
 
 const app = require('../utilities/cors').whitelisting(express())
@@ -13,9 +13,6 @@ const {
 
 const port = process.env.PORT || 3000
 
-const publicDirPath = path.join(__dirname, '../public')
-console.log(__dirname);
-console.log(publicDirPath);
 
 const oauthClient = new OAuthClient({
   clientId: process.env.clientId,
@@ -27,7 +24,6 @@ const oauthClient = new OAuthClient({
 const { validate } = require('../utilities/auth')
 
 app.use(express.json())
-app.use(express.static(publicDirPath))
 
 app.post('/authUri', validate, async (req, res) => {
 
