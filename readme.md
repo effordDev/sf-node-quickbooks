@@ -8,7 +8,6 @@
      scopes
      realmId
 
-
      ALLOWED_01
      ALLOWED_02
 
